@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -10,9 +9,9 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { MedicineHomeComponent } from './component/medicine-home/medicine-home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { TopDealsComponent } from './component/top-deals/top-deals.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewMedicineComponent } from './component/view-medicine/view-medicine.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     PageNotFoundComponent,
     MedicineHomeComponent,
-    TopDealsComponent
+    ViewMedicineComponent
   ],
   imports: [
     BrowserModule,

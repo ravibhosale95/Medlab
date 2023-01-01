@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpService } from 'src/app/core/http/http.service';
 
@@ -42,7 +43,7 @@ TopDeals!:any;
     nav: true
   }
 
-  constructor(private svc:HttpService) { }
+  constructor(private svc:HttpService,private router:Router) { }
 
   ngOnInit(): void {
     this.getTopDeals();
@@ -97,5 +98,9 @@ this.svc.geTopDealsFromServer("medicineDetails").subscribe({
   }
   //complete: () => console.info('complete') 
 })
+  }
+
+  navigate(drugCode:string){
+    this.router.navigate(['viewmedicine',drugCode]);
   }
 }

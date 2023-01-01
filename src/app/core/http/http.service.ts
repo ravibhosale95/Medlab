@@ -20,4 +20,9 @@ export class HttpService {
     let url = this.baseUrl + endPoint;
     return this.http.get(url, { 'headers': this.httpHeaders, 'params': httpParams });
   }
+
+  getMedicineFromServer(endPoint: string, httpParams: HttpParams = new HttpParams()) {
+    let url = this.baseUrl + endPoint;
+    return this.http.get(url, { 'headers': this.httpHeaders, 'params': httpParams });
+  }
 }
