@@ -25,4 +25,14 @@ export class HttpService {
     let url = this.baseUrl + endPoint;
     return this.http.get(url, { 'headers': this.httpHeaders, 'params': httpParams });
   }
+
+  getCategoriesFromServer(endPoint: string, httpParams: HttpParams = new HttpParams()) {
+    let url = this.baseUrl + endPoint;
+    return this.http.get(url, { 'headers': this.httpHeaders, 'params': httpParams });
+  }
+
+  postUserDetailsToServer(endPoint: string, requestBody:any) {
+    let url = this.baseUrl + endPoint;
+    return this.http.post(url, requestBody,{ 'headers': this.httpHeaders});
+  }
 }

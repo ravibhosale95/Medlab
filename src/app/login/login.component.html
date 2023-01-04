@@ -1,0 +1,32 @@
+<div class="container">
+    <!-- login failed alert -->
+    <div class="alert alert-danger text-center" role="alert" *ngIf="loginFailed">
+        check your credentials or register first...
+    </div>
+
+    <div class="row">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile No</label>
+                <input type="text" class="form-control" id="mobile" formControlName="mobile" placeholder="mobile no">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group mb-3">
+                    <input class="form-control" [type]="type" id="password" name="password" placeholder="Password"
+                        formControlName="password">
+
+                    <span class="input-group-text bg-body" *ngIf="showPassword" (click)="passToggle()">
+                        <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer"></i>
+                    </span>
+
+                    <span class="input-group-text bg-body" *ngIf="!showPassword" (click)="passToggle()">
+                        <i class="bi bi-eye-slash-fill" id="togglePassword" style="cursor: pointer"></i>
+                    </span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Login</button>
+        </form>
+    </div>
+</div>

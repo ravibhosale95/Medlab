@@ -1,14 +1,18 @@
 <div class="container">
     <div class="d-flex flex-row" style="height: 50px;">
+        <!-- meddibuddy logo -->
         <div class=" pt-2 col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 ">
             <a href="#">
                 <img class=" mx-auto d-block" src="../../../assets/images/medibuddylogoWithName.jpg" height="30px"
                     width="150px">
             </a>
         </div>
+
+        <!-- login about us -->
         <div class=" d-flex flex-row-reverse  pt-2 col-7 col-sm-8 col-md-9 col-lg-9 col-xl-10">
             <div class=" text-center mb-2 col-2 col-md-2 col-lg-1 col-xl-1">
-                <a href="#">Login</a>
+                <a class="text-primary cursor" *ngIf="!loginSuccess" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+                <a class="text-primary cursor" *ngIf="loginSuccess">{{loggedUserDetails.username}}</a>
             </div>
             <div class=" text-center mb-2 col-3 col-md-2 col-lg-2 col-xl-1">
                 <a href="#">About us</a>
@@ -18,7 +22,41 @@
             </div>
         </div>
     </div>
+</div>
 
+
+<!-- login Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- modal title close button -->
+        <div class="modal-header text-center">
+          <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">{{currentPage}} Form</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closeBtn></button>
+        </div>
+
+        <div class="modal-body">
+            <!-- sign up div -->
+            <div *ngIf="(currentPage=='Signup')">
+                <app-signup></app-signup>
+            </div>
+
+            <!-- login div -->
+            <div *ngIf="(currentPage=='Login')">
+                <app-login (loginEvent)="handleModal($event)"></app-login>
+            </div>
+
+        </div>
+        <!-- login signup switch button -->
+        <div class="container mb-5">
+            <div class="container">
+                <button type="button" class="btn btn-primary w-100" *ngIf="!(currentPage=='Login')" (click)="toggleCurrentPage('Login')">Login</button>
+                <button type="button" class="btn btn-primary w-100" *ngIf="!(currentPage=='Signup')" (click)="toggleCurrentPage('Signup')">Sign up</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- <div class=" mt-3 d-flex m-auto" style="height: 120px;">
         <div class="d-flex m-auto col sm-2 col-10 col-md-10 col-lg-10 col-xl-8">
            
@@ -97,5 +135,3 @@
 
         
     </div> -->
-
-</div>

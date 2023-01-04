@@ -1,4 +1,17 @@
+<div>
+    <div class="bg-primary d-flex align-items-center" style="height: 40px;">
+        <div class="d-flex align-items-center cursor" [routerLink]="['/medicine']">
+            <i class="bi bi-arrow-left fs-1 me-1 text-light ms-5"></i>
+            <h5 class="text-light">Medicine</h5>
+        </div>
+    </div>
+    <div class="" style="height: 40px; background-color: #f0f7fc;">
+
+    </div>
+</div>
+
 <div class="container">
+    <div [hidden]="drugDeatailsLoaded">Product Details Not Found</div>
     <div class="w-75 m-auto" *ngIf="drugDeatailsLoaded">
         <!-- Medicine details header -->
         <div class="">
@@ -24,7 +37,7 @@
                         <h5 class=" text-decoration-line-through text-secondary">MRP ₹{{drugDetails[0].actualPrice}}/-*</h5>
                     </div>
                     <div class="d-flex bo w-50">
-                        <h2 class=" me-2">₹ {{drugDetails[0].actualPrice}}/-*</h2>
+                        <h3 class=" me-2">₹ {{drugDetails[0].actualPrice}}/-*</h3>
                         <h4 class="text-success">{{drugDetails[0].discountPercentage}}%</h4>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { filter, pairwise } from 'rxjs';
 import { HttpService } from 'src/app/core/http/http.service';
 
 @Component({
@@ -12,7 +13,9 @@ export class ViewMedicineComponent implements OnInit {
   drugCode!:string | null;
   drugDetails:drugDetails[]=[];
   drugDeatailsLoaded:Boolean=false;
-  constructor(private svc:HttpService, private activeRoute:ActivatedRoute) { }
+
+  constructor(private svc:HttpService, private activeRoute:ActivatedRoute, private router:Router) { 
+  }
 
   ngOnInit(): void {
     this.drugCode=this.activeRoute.snapshot.paramMap.get('drugCode');
@@ -28,7 +31,6 @@ if(drugCode!=null){
       next:(response:any)=>{
         if(response && response.length>0){
           this.drugDetails=response; 
-          console.log(this.drugDetails);
           this.drugDeatailsLoaded=true;
         }
      },

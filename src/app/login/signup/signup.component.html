@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="alert alert-danger text-center" role="alert" *ngIf="(!otpVerified) && (signUpForm.valid)">
+       Mobile Verification is Mandatory
+      </div>
+
+      <div class="alert alert-success text-center" role="alert" *ngIf="signUpSuccess">
+        <h3>Registration Successfull...  please login</h3>
+       </div>
+
+    <div class="row">
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+
+            <!-- username -->
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" placeholder="enter username" formControlName="username">
+            </div>
+
+            <!-- mobile input -->
+                <label class="form-label" for="mobile">Mobile No</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control w-75" placeholder="Mobile No" id="mobile" formControlName="mobile" (ngModelChange)="mobNoChanged()">
+                    <button class="btn btn-link text-decoration-none text-dark bg-warning" id="basic-addon2" *ngIf="!otpVerified" (click)="sendOtp()">Send OTP</button>
+                    <button class="btn btn-link text-decoration-none text bg-success text-light" id="basic-addon2" *ngIf="otpVerified"><i class="bi bi-check-circle-fill"></i> Verified</button>
+                  </div>
+
+                  <!-- otp -->
+                <div *ngIf="showOtpInput">
+                    <label class="form-label" for="OTP">OTP</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control w-75" placeholder="Enter otp" id="OTP" #otp>
+                        <span class="input-group-text bg-primary text-light cursor" id="basic-addon2" (click)="verifyOtp(otp.value)">verify OTP</span>
+                    </div>
+                    <div class="text-danger bg-danger-subtle text-center rounded-5 w-50 m-auto" *ngIf="otpMatchFailed">
+                        Wrong OTP !!!
+                    </div>
+                    <div class="text-center">
+                        <span class="text-success" *ngIf="otpTimer>20">otp is valid for {{otpTimer}}</span>
+                        <span class="text-warning" *ngIf="otpTimer>2 && otpTimer<21">otp is valid for <span class="text-danger">{{otpTimer}}</span></span>
+                        <span class="text-danger" *ngIf="otpTimer>0 && otpTimer<3">otp expired !!! <span class="text-success">click send otp</span></span>
+
+                    </div>
+                </div>
+
+            <!-- password -->
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" id="password" placeholder="enter password" formControlName="password">
+            </div>
+
+            <!-- submit button -->
+            <div class="text-center">
+                <button class="btn btn-primary w-100" [disabled]="!(!signUpSuccess &&otpVerified && signUpForm.valid)">Sign up</button>
+            </div>
+        </form>
+
+    </div>
+</div>

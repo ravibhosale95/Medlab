@@ -62,7 +62,7 @@
 <div class="container  w-75">
     <div class="clearfix mt-4 mb-4">
         <div class="float-start fs-4 fw-bold">Top Deals</div>
-        <div class="float-end fs-5 text-primary">
+        <div class="float-end fs-5 text-primary" [routerLink]="['/categories']">
           <button class="btn btn-link fs-5 text-decoration-none">View All</button>
         </div>
     </div>
@@ -76,6 +76,7 @@
 
                 <div class="card card-block" style="width: 270px;">
                   <button class="btn btn-link text-decoration-none text-black" (click)="navigate(deal.drugCode)">
+                    <!-- [routerLink]="['/view-product-details',deal.drugCode]" -->
                     <img [src]="deal.productImageSlug[0]" class="card-img-top m-2 p-4" alt="..." height="220">
                   </button>
                     <div class="card-body">

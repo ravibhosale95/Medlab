@@ -12,6 +12,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewMedicineComponent } from './component/view-medicine/view-medicine.component';
+import { CategoriesComponent } from './component/categories/categories.component';
+import { LoginModule } from './login/login.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { ViewMedicineComponent } from './component/view-medicine/view-medicine.c
     FooterComponent,
     PageNotFoundComponent,
     MedicineHomeComponent,
-    ViewMedicineComponent
+    ViewMedicineComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { ViewMedicineComponent } from './component/view-medicine/view-medicine.c
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
